@@ -6,6 +6,21 @@ function submitForm() {
     let address = document.getElementById("address").value;
     let age = document.getElementById("age").value;
 
+    employee.name = name;
+    employee.address = address;
+    employee.age = age;
+    console.log(employee)
+    
+    $("#submitConfirm").modal('toggle');
+    alert(`Ready to submit form ${JSON.stringify(employee)}`);
+   
+}
+
+function submitFormConfirm(){
+    let name = document.getElementById("name").value;
+    let address = document.getElementById("address").value;
+    let age = document.getElementById("age").value;
+
 
     if (name == null || name === "") {
         alert("Please enter name");
@@ -19,20 +34,9 @@ function submitForm() {
         alert("Please enter address");
         return;
     }
-
-    employee.name = name;
-    employee.address = address;
-    employee.age = age;
-    console.log(employee)
-    
-    $("#submitConfirm").modal('toggle');
-    alert(`Ready to submit form ${JSON.stringify(employee)}`);
-   
-}
-
-function submitFormConfirm(){
     $("#submitConfirm").modal('toggle');
 }
+
 function resetFormConfirm() {
     let name = document.getElementById("name").value;
     let address = document.getElementById("address").value;
