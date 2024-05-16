@@ -22,6 +22,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src='employee.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -32,10 +33,10 @@
                     Name:
                 </div>
                 <div class="col-4">
-                    <input type="text" id="name"  class="form-control" placeholder="Name" title="Enter name">
+                    <input type="text" id="name" class="form-control" placeholder="Name" title="Enter name">
                 </div>
             </div>
-            <div class="row"  style="margin-top: 10px;">
+            <div class="row" style="margin-top: 10px;">
                 <div class="col-1">
                     Age:
                 </div>
@@ -51,27 +52,70 @@
                     </select>
                 </div>
             </div>
-            <div class="row"  style="margin-top: 10px;"  >
+            <div class="row" style="margin-top: 10px;">
                 <div class="col-1">
                     Address:
                 </div>
                 <div class="col-4">
-                    <input type="text" id="address" class="form-control" placeholder="Address" title="Enter address" >
+                    <input type="text" id="address" class="form-control" placeholder="Address" title="Enter address">
                 </div>
             </div>
 
-            <div class="row"  style="margin-top: 20px;">
+            <div class="row" style="margin-top: 20px;">
                 <div class="col-2"></div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="submitFormConfirm()">Submit</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-danger" onclick="resetForm()">Reser</button>
+                    <button type="button" class="btn btn-danger" onclick="resetFormConfirm()">Reser</button>
                 </div>
                 <div class="col-4"></div>
             </div>
         </div>
     </div>
+
+
+
+
+    <!-- Submit Modal -->
+    <div class="modal fade" id="submitConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to submit the form?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Reset Modal -->
+     <div class="modal fade" id="resetConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+                 Are you sure to reset the form?
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-primary" onclick="resetForm()">Reset</button>
+             </div>
+         </div>
+     </div>
+ </div>
 </body>
 
 </html>
