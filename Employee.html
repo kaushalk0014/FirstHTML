@@ -26,53 +26,80 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" >
         <div style="margin-top: 50px; border: 5px solid royalblue; padding: 20px;">
+         <div class="row" style="margin-top: 10px; ">
+            <div class="col-1">
+             Name:
+            </div>
+            <div class="col-4">
+                <input type="text" title="Enter Name" id="name" class="form-control"  placeholder="Enter your name">
+            </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+            <div class="col-1">
+            Age:
+            </div>
+            <div class="col-4">
+                <input type="number" title="Enter age" id="age" class="form-control"  placeholder="Enter your age">
+            </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+            <div class="col-1">
+                Address:
+            </div>
+            <div class="col-4">
+                <input type="text" title="Enter address" id="address" class="form-control"  placeholder="Enter Address">
+            </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+            <div class="col-1">
+                Mobile:
+            </div>
+            <div class="col-4">
+                <input type="number" title="Enter number" id="mobile" class="form-control"  placeholder="Enter mobile no.">
+            </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+            <div class="col-1">
+                Gender:
+            </div>
+            <div class="col-4" id="gender">
+                <input type="radio">Male
+                <input type="radio">Female
+                <input type="radio">None of these
+            </div>
+        </div>
             <div class="row" style="margin-top: 10px;">
                 <div class="col-1">
-                    Name:
+                    DOB:
                 </div>
-                <div class="col-4">
-                    <input type="text" id="name" class="form-control" placeholder="Name" title="Enter name">
+                <div class="col-4" id="date">
+                    <input type="date" title="Enter Date of birth" class="form-control"  placeholder="Date of birth">
                 </div>
-            </div>
-            <div class="row" style="margin-top: 10px;">
+             </div>
+             <div class="row" style="margin-top: 10px;">
                 <div class="col-1">
-                    Age:
+                    Social Media:
                 </div>
-                <div class="col-4">
-                    <select class="form-control" id="age">
-                        <option value="">---select---</option>
-                        <option value="20">20</option>
-                        <option value="25">25</option>
-                        <option value="30">30</option>
-                        <option value="35">35</option>
-                        <option value="40">40</option>
-
-                    </select>
+                <div class="col-4" id="media">
+                    <input type="checkbox">FB
+                    <input type="checkbox">Instra
+                    <input type="checkbox">Youtube
                 </div>
             </div>
-            <div class="row" style="margin-top: 10px;">
-                <div class="col-1">
-                    Address:
-                </div>
-                <div class="col-4">
-                    <input type="text" id="address" class="form-control" placeholder="Address" title="Enter address">
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 20px;">
+            <div class="row"  style="margin-top: 20px;">
                 <div class="col-2"></div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-primary" onclick="submitFormConfirm()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-danger" onclick="resetFormConfirm()">Reser</button>
+                    <button type="button" class="btn btn-danger" onclick="resetForm()">Reser</button>
                 </div>
                 <div class="col-4"></div>
             </div>
         </div>
-    </div>
+       </div> 
 
 
 
@@ -116,6 +143,7 @@
          </div>
      </div>
  </div>
+ <p style="color: red;"></p>
 </body>
 
 </html>
