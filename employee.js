@@ -10,13 +10,31 @@ function submitForm() {
     employee.address = address;
     employee.age = age;
     console.log(employee)
-    
+
     $("#submitConfirm").modal('toggle');
-    alert(`Ready to submit form ${JSON.stringify(employee)}`);
-   
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:8088/api/save/customer");
+    xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
+
+    const body = JSON.stringify({
+        name: name,
+        age: age,
+        address: address,
+        gender: "Male"
+    });
+    xhr.onload = () => {
+        if (xhr.readyState == 4 && xhr.status == 201) {
+            console.log(JSON.parse(xhr.responseText));
+        } else {
+            console.log(`Error: ${xhr.status}`);
+        }
+    };
+    xhr.send(body);
+
+
 }
 
-function submitFormConfirm(){
+function submitFormConfirm() {
     let name = document.getElementById("name").value;
     let address = document.getElementById("address").value;
     let age = document.getElementById("age").value;
@@ -35,17 +53,19 @@ function submitFormConfirm(){
         return;
     }
     $("#submitConfirm").modal('toggle');
+
+  
 }
 
 function resetFormConfirm() {
     let name = document.getElementById("name").value;
     let address = document.getElementById("address").value;
     let age = document.getElementById("age").value;
-    if((name!==null&&name!=="")||(address!==null&&address!=="")||(age!==null&&age!=="")){
+    if ((name !== null && name !== "") || (address !== null && address !== "") || (age !== null && age !== "")) {
         $("#resetConfirm").modal('toggle');
     }
 
-    
+
 }
 function resetForm() {
     document.getElementById("name").value = "";
