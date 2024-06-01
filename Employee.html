@@ -23,11 +23,36 @@
         crossorigin="anonymous"></script>
     <script src='employee.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="employee.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="formLoad()">
     <div class="container">
-        <div style="margin-top: 50px; border: 5px solid royalblue; padding: 20px;">
+        <div id="employeeListForm" style="margin-top: 50px; border: 5px solid royalblue; padding: 20px;">
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary" onclick="openForm()">Open Form</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-striped" style="margin-top: 10px;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Action</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Address</th>
+                            </tr>
+                        </thead>
+                        <tbody id="renderList">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="employeeSaveForm" style="margin-top: 50px; border: 5px solid royalblue; padding: 20px;">
             <div class="row" style="margin-top: 10px;">
                 <div class="col-1">
                     Name:
@@ -67,9 +92,11 @@
                     <button type="button" class="btn btn-primary" onclick="submitFormConfirm()">Submit</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-danger" onclick="resetFormConfirm()">Reser</button>
+                    <button type="button" class="btn btn-danger" onclick="resetFormConfirm()">Reset</button>
                 </div>
-                <div class="col-4"></div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-primary" onclick="viewEmployee()">View Employee</button>
+                </div>
             </div>
         </div>
     </div>
@@ -97,25 +124,25 @@
         </div>
     </div>
 
-     <!-- Reset Modal -->
-     <div class="modal fade" id="resetConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-     <div class="modal-dialog">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
-                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-             </div>
-             <div class="modal-body">
-                 Are you sure to reset the form?
-             </div>
-             <div class="modal-footer">
-                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <button type="button" class="btn btn-primary" onclick="resetForm()">Reset</button>
-             </div>
-         </div>
-     </div>
- </div>
+    <!-- Reset Modal -->
+    <div class="modal fade" id="resetConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to reset the form?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="resetForm()">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

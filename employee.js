@@ -1,4 +1,9 @@
 
+function formLoad() {
+    var form = document.getElementById("employeeListForm");
+    form.classList.add("hideSubmitForm");
+}
+
 
 function submitForm() {
     let employee = {};
@@ -23,7 +28,7 @@ function submitForm() {
         gender: "Male"
     });
     xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 201) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
             console.log(JSON.parse(xhr.responseText));
         } else {
             console.log(`Error: ${xhr.status}`);
@@ -31,7 +36,7 @@ function submitForm() {
     };
     xhr.send(body);
 
-
+    viewEmployee();
 }
 
 function submitFormConfirm() {
@@ -54,7 +59,7 @@ function submitFormConfirm() {
     }
     $("#submitConfirm").modal('toggle');
 
-  
+
 }
 
 function resetFormConfirm() {
@@ -72,4 +77,71 @@ function resetForm() {
     document.getElementById("address").value = "";
     document.getElementById("age").value = "";
     $("#resetConfirm").modal('toggle');
+}
+
+function viewEmployee() {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:8088/api/getAll/customer");
+    xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8")
+    xhr.onload = () => {
+
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var element = document.getElementById("employeeSaveForm");
+            element.classList.remove("displaySubmitForm");
+            element.classList.add("hideSubmitForm");
+            var formList = document.getElementById("employeeListForm");
+            formList.classList.add("displaySubmitForm");
+
+         
+            let tBody = document.getElementById("renderList");
+            
+
+            while (tBody.hasChildNodes()) {
+                tBody.removeChild(tBody.firstChild);
+              }
+
+            let responseData = JSON.parse(xhr.responseText);
+            for (let i = 0; i < responseData.length; i++) {
+                console.log(responseData[i]);
+                let trData = document.createElement("tr");
+
+                // let tdAction = document.createElement("td");
+                // let textEdit = document.createTextNode(Edit);
+                // tdName.appendChild(textName);
+                // trData.appendChild(tdName);
+
+                let tdName = document.createElement("td");
+                let textName = document.createTextNode(responseData[i].name);
+                tdName.appendChild(textName);
+                trData.appendChild(tdName);
+
+                let tdAge = document.createElement("td");
+                let textAge = document.createTextNode(responseData[i].age);
+                tdAge.appendChild(textAge);
+                trData.appendChild(tdAge);
+
+
+                let tdaddress = document.createElement("td");
+                let textAddress = document.createTextNode(responseData[i].address);
+                tdaddress.appendChild(textAddress);
+                trData.appendChild(tdaddress);
+
+                tBody.appendChild(trData);
+            }
+        } else {
+            var element = document.getElementById("employeeSaveForm");
+            element.classList.add("displaySubmitForm");
+        }
+    };
+    xhr.send();
+}
+
+function openForm() {
+    var element = document.getElementById("employeeSaveForm");
+
+    element.classList.add("displaySubmitForm");
+    var formList = document.getElementById("employeeListForm");
+    formList.classList.remove("displaySubmitForm");
+    formList.classList.add("hideSubmitForm");
+
 }
