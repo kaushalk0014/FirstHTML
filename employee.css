@@ -4,3 +4,7 @@
 .displaySubmitForm{
     display: block;
 }
+
+.marginLeft{
+    margin-left: 5px;
+}

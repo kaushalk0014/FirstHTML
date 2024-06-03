@@ -1,5 +1,7 @@
 
+let currentEmployeeId=0;
 function formLoad() {
+    currentEmployeeId=0;
     var form = document.getElementById("employeeListForm");
     form.classList.add("hideSubmitForm");
 }
@@ -105,10 +107,28 @@ function viewEmployee() {
                 console.log(responseData[i]);
                 let trData = document.createElement("tr");
 
-                // let tdAction = document.createElement("td");
-                // let textEdit = document.createTextNode(Edit);
-                // tdName.appendChild(textName);
-                // trData.appendChild(tdName);
+                let tdEditBtn = document.createElement("td");
+                
+                let editBtn = document.createElement("button");
+              
+                editBtn.textContent = 'Edit';
+                editBtn.className="btn btn-primary";
+                editBtn.addEventListener('click', () => {
+                    onClickEdit(responseData[i])
+                });
+
+                let deleteBtn = document.createElement("button");
+              
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.className="btn btn-danger marginLeft";
+                deleteBtn.addEventListener('click', () => {
+                    onClickDelete(responseData[i].id)
+                });
+
+
+                tdEditBtn.appendChild(editBtn);
+                tdEditBtn.appendChild(deleteBtn);
+                trData.appendChild(tdEditBtn);
 
                 let tdName = document.createElement("td");
                 let textName = document.createTextNode(responseData[i].name);
@@ -134,6 +154,20 @@ function viewEmployee() {
         }
     };
     xhr.send();
+}
+
+function onClickEdit(data){
+    console.log(data);
+}
+
+function onClickDelete(id){
+    currentEmployeeId=id;
+    $("#deleteConfirm").modal('toggle');
+}
+
+function deleteEmployee(){
+    console.log(currentEmployeeId);
+    $("#deleteConfirm").modal('toggle');
 }
 
 function openForm() {
